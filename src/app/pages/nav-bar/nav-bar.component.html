@@ -1,0 +1,20 @@
+<nav>
+  <h1 class="logo">logo.</h1>
+  <form (Submit)="search()" style="border: none; position: unset; padding: 0">
+    <input
+      type="text"
+      placeholder="Search..."
+      [(ngModel)]="articleTitle"
+      name="sea"
+    />
+    <input type="submit" (click)="search()" style="display: none" />
+  </form>
+  <section *ngIf="!user" style="margin: auto 0; display: inline-flex">
+    <button class="nav-btn1">get started</button>
+    <button class="nav-btn2">get started</button>
+  </section>
+  <section *ngIf="user" style="margin: auto 0; display: inline-flex">
+    <h3>{{ user.full_name }}</h3>
+    <img [src]="user.image" alt="img" />
+  </section>
+</nav>

@@ -1,0 +1,7 @@
+body {
+  margin: 0;
+  font-family: "Ubuntu", sans-serif;
+}
+img {
+  object-fit: cover;
+}

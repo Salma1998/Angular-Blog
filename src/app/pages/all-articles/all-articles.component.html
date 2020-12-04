@@ -1,0 +1,43 @@
+<section class="categories-section">
+  <h2 class="categories-title">Categories</h2>
+  <div class="categories">
+    <button>All blogs</button>
+    <section *ngFor="let category of categoriesList">
+      <button (click)="searchByCategory(category.name)">
+        {{ category.name }}
+      </button>
+    </section>
+  </div>
+</section>
+<section class="cards" *ngFor="let article of articlesList">
+  <div class="card" [routerLink]="[article._id]">
+    <div class="article-img">
+      <img alt="img" [src]="'http://' + article.coverUrl" />
+    </div>
+    <div class="article-info">
+      <div class="user-info">
+        <div class="div">
+          <div class="user-img">
+            <img [src]="'http://' + article.authorImageUrl" alt="img" />
+          </div>
+          <div class="user-info-div">
+            <div class="user-name">{{ article.author.full_name }}</div>
+            <div class="user-email">{{ article.author.email }}</div>
+          </div>
+        </div>
+        <div class="date">{{ article.updatedAt | date: "medium" }}</div>
+      </div>
+      <div>
+        <h2 class="article-title">{{ article.title }}</h2>
+        <p class="article-content">
+          {{ article.content }}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-paginator
+  *ngFor="let page of pagesList; let i = index"
+  [in]="i"
+></app-paginator>

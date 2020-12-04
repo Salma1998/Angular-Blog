@@ -1,0 +1,45 @@
+<section class="article-review">
+  <img
+    *ngIf="hasImage"
+    class="article-review-img"
+    [src]="article.imgURL"
+    alt="img"
+  />
+  <section
+    *ngIf="!hasImage"
+    class="article-review-img"
+    style="
+      background: #efefef;
+      border: 1px solid rgba(221, 221, 221, 0.479);
+      margin-bottom: 30px;
+    "
+  >
+    <img
+      style="width: 15%; margin: 60px auto; display: block"
+      src="./../../../assets/images/upload.png"
+      alt="img"
+    />
+  </section>
+  <section>
+    <div>
+      <div class="article-edit">
+        <h2>Title</h2>
+        <input value="{{ article.title }}" />
+        <h2>Category</h2>
+        <input value="{{ article.category.name }}" />
+        <!--  <input class="article-review-article-content" value=""> -->
+        <span
+          class="textarea article-review-article-content"
+          role="textbox"
+          contenteditable
+        >
+          {{ article.content }}
+        </span>
+      </div>
+    </div>
+    <div class="read-times btns">
+      <button class="nav-btn1 cancel">Cancel</button>
+      <button class="nav-btn2">Confirm</button>
+    </div>
+  </section>
+</section>

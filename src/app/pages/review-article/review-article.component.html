@@ -1,0 +1,56 @@
+<span class="error-code-span" *ngIf="error">{{ errorCode }}</span>
+<span class="error-message-span" *ngIf="error">{{ errorMessage }}</span>
+<span class="loading-span" *ngIf="!error && !article">Loading</span>
+<style>
+    .error-code-span,
+    .error-message-span,
+    .loading-span {
+        text-align: center;
+        font-size: 50px;
+        display: block;
+        margin: 50px auto;
+        text-transform: uppercase;
+        color: #333;
+    }
+    
+    .error-code-span {
+        font-size: 80px;
+        margin-top: 100px;
+        color: rgb(240, 101, 101);
+    }
+</style>
+<section *ngIf="article && !error" class="article-review">
+    <img *ngIf="articleHasImage" class="article-review-img" alt="img" [src]="'http://' + article.coverUrl" />
+    <img class="article-review-img" *ngIf="!articleHasImage" alt="img" src="./../../../assets/images/website.png" />
+    <section>
+        <div>
+            <div class="article-review-date">
+                {{ article.updatedAt | date: "medium" }}
+            </div>
+            <div class="article-review-user-info">
+                <div class="div">
+                    <div class="article-review-user-img">
+                        <img *ngIf="userHasImage" alt="img" [src]="'http://' + article.authorImageUrl" />
+                        <img *ngIf="!articleHasImage" alt="img" src="./../../../assets/images/website.png" />
+                    </div>
+                    <div class="user-info-div">
+                        <div class="article-review-user-name">
+                            {{ article.author.full_name }}
+                        </div>
+                        <div class="article-review-user-email">
+                            {{ article.author.email }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h2 class="article-review-article-title">{{ article.title }}</h2>
+                <p class="article-review-article-content">
+                    {{ article.content }}
+                </p>
+            </div>
+        </div>
+        <div class="read-times">Read times {{ article.read_count }}(times)</div>
+    </section>
+</section>
+<div *ngIf="!article">Article Not Found!!!</div>
